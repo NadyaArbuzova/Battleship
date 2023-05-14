@@ -7,9 +7,12 @@ import java.util.HashMap;
 
 interface ModelPlayer {
     void addPlayer(String playerName) throws IOException;
+
     void deletePlayer(String playerName) throws IOException;
+
     Player getPlayer(String playerName);
-    HashMap<String,Player> getPlayers() throws IOException;
+
+    HashMap<String, Player> getPlayers() throws IOException;
 
     void winner(String playerName);
 
@@ -17,19 +20,21 @@ interface ModelPlayer {
 
     void close() throws IOException;
 }
+
 public class FileSystemPlayer implements ModelPlayer {
     private static final File file = new File("Players");
-    private static final HashMap<String,Player> players = new HashMap<>();
+    private static final HashMap<String, Player> players = new HashMap<>();
 
     static {
         try {
-                FileReader fileReader = new FileReader(file);
-                BufferedReader reader = new BufferedReader(fileReader);
-                String line = reader.readLine();
-                while (line != null) {
-                    String[] player = line.split(" ");
-                    if (player.length == 3) players.put(player[0], new Player(player[0], Integer.parseInt(player[1]), Integer.parseInt(player[2])));
-                    line = reader.readLine();
+            FileReader fileReader = new FileReader(file);
+            BufferedReader reader = new BufferedReader(fileReader);
+            String line = reader.readLine();
+            while (line != null) {
+                String[] player = line.split(" ");
+                if (player.length == 3)
+                    players.put(player[0], new Player(player[0], Integer.parseInt(player[1]), Integer.parseInt(player[2])));
+                line = reader.readLine();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -55,7 +60,7 @@ public class FileSystemPlayer implements ModelPlayer {
     }
 
     @Override
-    public HashMap<String,Player> getPlayers() {
+    public HashMap<String, Player> getPlayers() {
         return players;
     }
 
@@ -73,7 +78,8 @@ public class FileSystemPlayer implements ModelPlayer {
     @Override
     public void close() throws IOException {
         FileWriter writer = new FileWriter(file);
-        for (Player player: players.values()) writer.write(player.getName()+" "+ player.getWins()+" "+player.getRounds()+"\n");
+        for (Player player : players.values())
+            writer.write(player.getName() + " " + player.getWins() + " " + player.getRounds() + "\n");
         writer.close();
     }
 }
