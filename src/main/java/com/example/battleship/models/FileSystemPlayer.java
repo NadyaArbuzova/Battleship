@@ -31,7 +31,7 @@ public class FileSystemPlayer implements ModelPlayer {
             BufferedReader reader = new BufferedReader(fileReader);
             String line = reader.readLine();
             while (line != null) {
-                String[] player = line.split(" ");
+                String[] player = line.split(";");
                 if (player.length == 3)
                     players.put(player[0], new Player(player[0], Integer.parseInt(player[1]), Integer.parseInt(player[2])));
                 line = reader.readLine();
@@ -79,7 +79,7 @@ public class FileSystemPlayer implements ModelPlayer {
     public void close() throws IOException {
         FileWriter writer = new FileWriter(file);
         for (Player player : players.values())
-            writer.write(player.getName() + " " + player.getWins() + " " + player.getRounds() + "\n");
+            writer.write(player.getName() + ";" + player.getWins() + ";" + player.getRounds() + "\n");
         writer.close();
     }
 }

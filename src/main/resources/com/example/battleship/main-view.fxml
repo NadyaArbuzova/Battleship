@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #ffb489;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleship.Controller">
+    <ImageView fitHeight="558.0" fitWidth="831.0" layoutX="-127.0" layoutY="-78.0" opacity="0.42" pickOnBounds="true" preserveRatio="true">
+        <Image url="@image/ship.png" />
+    </ImageView>
+    <Label layoutX="152.0" layoutY="110.0" text="BATTLESHIP" textFill="#343481">
+        <font>
+          <Font name="Kristen ITC" size="56.0" />
+        </font>
+    </Label>
+    <Button fx:id="playButton" layoutX="247.0" layoutY="221.0" mnemonicParsing="false" opacity="0.8" prefHeight="46.0" prefWidth="206.0" style="-fx-background-color: #a3cbdc; -fx-border-color: #0f144e; -fx-border-radius: 7; -fx-background-radius: 7;" text="Play">
+        <font>
+            <Font name="Courier New" size="30.0" />
+        </font>
+    </Button>
+</AnchorPane>
