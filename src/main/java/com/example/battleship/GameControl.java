@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -46,6 +47,12 @@ public class GameControl {
 
     @FXML
     void initialize() {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                cell1.add(new Pane(), i, j);
+                cell2.add(new Pane(), i, j);
+            }
+        }
         playerName1.setText(Game.getPlayer1().getPlayer().getName());
         playerName2.setText(Game.getPlayer2().getPlayer().getName());
         turn(Game.getPlayer1(), cell1);
@@ -72,22 +79,22 @@ public class GameControl {
                 e.relocate(e.getLayoutX(), e.getLayoutY());
                 int x = (int) (Math.round(e.getLayoutX()) / 27);
                 int y = (int) (Math.round(e.getLayoutY()) / 27);
-                if (!player.getPlayingField().isShot(x, y)) {
-                    player.getPlayingField().addShot(x, y);
-                    for (Pair<Integer,Integer> shots: player.getPlayingField().getCellShots()){
-                        for (Pair<Integer,Integer> ships: player.getPlayingField().getCellShips()){
-                            if (shots.equals(ships)) {
-                                hit[0] = true;
-                                player.getPlayingField().getCellShips().remove(ships);
-                                cell.add(new Circle(5), shots.getKey(), shots.getValue());
-                                player.getPlayingField().getCellShots().remove(shots);
-                                break;
-                            }
-                            cell.add(new Circle(5), shots.getKey(), shots.getValue());
-
-                        }
-                    }
-                }
+//               if (!player.getPlayingField().isShot(x, y)) {
+//                    player.getPlayingField().addShot(x, y);
+//                    for (Pair<Integer,Integer> shots: player.getPlayingField().getCellShots()){
+//                        for (Pair<Integer,Integer> ships: player.getPlayingField().getCellShips()){
+//                            if (shots.equals(ships)) {
+//                                hit[0] = true;
+//                                player.getPlayingField().getCellShips().remove(ships);
+//                                cell.add(new Circle(5), shots.getKey(), shots.getValue());
+//                                player.getPlayingField().getCellShots().remove(shots);
+//                                break;
+//                            }
+//                            cell.add(new Circle(5), shots.getKey(), shots.getValue());
+//
+//                        }
+//                    }
+//                }
             });
         }
     }
