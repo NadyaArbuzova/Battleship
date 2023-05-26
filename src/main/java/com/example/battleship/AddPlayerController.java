@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.example.battleship.models.FileSystemPlayer;
+import com.example.battleship.models.Game;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -63,18 +64,17 @@ public class AddPlayerController {
             if (playerName.getText().isEmpty() || playerName.getText().contains(";")) {
                 information("This name is invalid! Choose another name!");
             }else {
-                FileSystemPlayer fileSystemPlayer = new FileSystemPlayer();
-                fileSystemPlayer.addPlayer(playerName.getText());
-                Player player1 = fileSystemPlayer.getPlayer(playerName.getText());
+                Battleship.fileSystemPlayer.addPlayer(playerName.getText());
+                Player player1 = Battleship.fileSystemPlayer.getPlayer(playerName.getText());
                 text.setText("Player 2, enter a name or select from the list");
                 nextButton.setOnAction(event1 -> {
                     if (playerName.getText().isEmpty() || playerName.getText().contains(";")) {
                         information("This name is invalid! Choose another name!");
                     } else {
                         if (!playerName.getText().equals(player1.getName())) {
-                            fileSystemPlayer.addPlayer(playerName.getText());
-                            Player player2 = fileSystemPlayer.getPlayer(playerName.getText());
-                            new Game(player1, player2);
+                            Battleship.fileSystemPlayer.addPlayer(playerName.getText());
+                            Player player2 = Battleship.fileSystemPlayer.getPlayer(playerName.getText());
+                            Battleship.game = new Game(player1, player2);
                             nextButton.getScene().getWindow().hide();
                             FXMLLoader loader = new FXMLLoader();
                             loader.setLocation(getClass().getResource("placement-of-ships.fxml"));

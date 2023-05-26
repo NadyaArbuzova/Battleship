@@ -1,30 +1,29 @@
 package com.example.battleship;
 
 import javafx.scene.image.Image;
+import javafx.scene.shape.Rectangle;
 
 import java.util.Objects;
 
 public class ShipType {
     private final int size;
-    private final Image image;
+    private final Rectangle rectangle;
 
-    public ShipType(int size) {
+    public ShipType(int size, Rectangle rectangle) {
         this.size = size;
-        String file = switch (size) {
-            case 1 -> Objects.requireNonNull(getClass().getResource("c1.png")).toString();
-            case 2 -> Objects.requireNonNull(getClass().getResource("c2.png")).toString();
-            case 3 -> Objects.requireNonNull(getClass().getResource("c3.png")).toString();
-            case 4 -> Objects.requireNonNull(getClass().getResource("c4.png")).toString();
-            default -> null;
-        };
-        image = new Image(Objects.requireNonNull(file));
+        this.rectangle = rectangle;
     }
 
     public int getSize() {
         return size;
     }
 
-    public Image getImage() {
-        return image;
+    public Rectangle getRectangle() {
+        return rectangle;
+    }
+    public ShipType copy(){
+        Rectangle rectangle1 = new Rectangle(rectangle.getWidth(), rectangle.getHeight(), rectangle.getFill());
+        rectangle1.setStyle(rectangle1.getStyle());
+        return new ShipType(this.size, rectangle1);
     }
 }

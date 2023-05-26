@@ -2,6 +2,7 @@ package com.example.battleship;
 
 
 import javafx.scene.image.Image;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Pair;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -13,15 +14,22 @@ public class Ship {
     private final int x;
     private final int y;
     private final boolean rotate;
-    
+    private int hits = 0;
+    public int getHits() {
+        return hits;
+    }
+    public void addHits() {
+        this.hits++;
+    }
+
     private final ArrayList<Pair<Integer,Integer>> shipCellsXY;
     private final ArrayList<Pair<Integer,Integer>> cellsAroundTheShipXY;
 
-    public Ship(int size, int x, int y, boolean rotate) {
+    public Ship(int size, Rectangle rectangle, int x, int y, boolean rotate) {
         this.x = x;
         this.y = y;
         this.rotate = rotate;
-        shipType = new ShipType(size);
+        shipType = new ShipType(size, rectangle);
         shipCellsXY = new ArrayList<>();
         cellsAroundTheShipXY = new ArrayList<>();
         if (!rotate) {
@@ -36,7 +44,7 @@ public class Ship {
         }
         else  {
             for (int i = 0; i<size; i++){
-                shipCellsXY.add(new Pair<>(x-i, y));
+                shipCellsXY.add(new Pair<>(x, y+i));
             }
             for (int i = -1; i <=size; i++){
                 cellsAroundTheShipXY.add(new Pair<>(x-i, y-1));
@@ -44,6 +52,7 @@ public class Ship {
                 cellsAroundTheShipXY.add(new Pair<>(x-i, y+1));
             }
         }
+
 //        if (angle == 90 && y + size <= 9) {
 //            for (int i = 0; i<size; i++){
 //                shipCellsXY.add(new Pair<>(x, y+i));
@@ -66,12 +75,37 @@ public class Ship {
 //        }
 
     }
-
-
+    public Ship(ShipType shipType, int x, int y, boolean rotate) {
+        this.x = x;
+        this.y = y;
+        this.rotate = rotate;
+        this.shipType = shipType;
+        shipCellsXY = new ArrayList<>();
+        cellsAroundTheShipXY = new ArrayList<>();
+        int size = shipType.getSize();
+        if (!rotate) {
+            for (int i = 0; i < size; i++) {
+                shipCellsXY.add(new Pair<>(x + i, y));
+            }
+            for (int i = -1; i <= size; i++) {
+                cellsAroundTheShipXY.add(new Pair<>(x + i, y - 1));
+                cellsAroundTheShipXY.add(new Pair<>(x + i, y));
+                cellsAroundTheShipXY.add(new Pair<>(x + i, y + 1));
+            }
+        } else {
+            for (int i = 0; i < size; i++) {
+                shipCellsXY.add(new Pair<>(x, y+i));
+            }
+            for (int i = -1; i <= size; i++) {
+                cellsAroundTheShipXY.add(new Pair<>(x - 1, y + i));
+                cellsAroundTheShipXY.add(new Pair<>(x, y + i));
+                cellsAroundTheShipXY.add(new Pair<>(x + 1, y + i));
+            }
+        }
+    }
     public int getX() {
         return x;
     }
-
     public int getY() {
         return y;
     }
@@ -90,5 +124,8 @@ public class Ship {
 
     public ShipType getShipType() {
         return shipType;
+    }
+    public boolean shipKilled(){
+        return hits==shipType.getSize();
     }
 }

@@ -1,23 +1,25 @@
 package com.example.battleship;
 
+import com.example.battleship.models.PlayingField;
+
 public class PlayerOfThisRound {
     private final Player player;
-    Cell cell;
+    PlayingField playingField;
 
-    public PlayerOfThisRound(Player player, Cell cell) {
+    public PlayerOfThisRound(Player player, PlayingField cell) {
         this.player = player;
-        this.cell = cell;
+        this.playingField = cell;
     }
 
     public Player getPlayer() {
         return player;
     }
 
-    public Cell getCell() {
-        return cell;
+    public PlayingField getPlayingField() {
+        return playingField;
     }
 
-    public void setCell(Cell cell) {
-        this.cell = cell;
+    public void setPlayingField(PlayingField playingField) {
+        this.playingField = playingField;
     }
 }

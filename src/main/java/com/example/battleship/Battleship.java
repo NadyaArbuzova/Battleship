@@ -1,18 +1,19 @@
 package com.example.battleship;
 
 import com.example.battleship.models.FileSystemPlayer;
+import com.example.battleship.models.Game;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
 public class Battleship extends Application {
 
+    public static Game game;
+    public static FileSystemPlayer fileSystemPlayer = new FileSystemPlayer();
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("main-view.fxml"));
