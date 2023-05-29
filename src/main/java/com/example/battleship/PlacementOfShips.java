@@ -2,6 +2,8 @@ package com.example.battleship;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 import com.example.battleship.models.Game;
@@ -36,16 +38,23 @@ public class PlacementOfShips {
     private FlowPane flowPane;
 
     @FXML
-    private AnchorPane pane;
-
-    @FXML
     private Button nextButton;
 
     @FXML
     private Button rotateButton;
 
     @FXML
+    private Button randomButton;
+
+    @FXML
+    private Button deleteButton;
+
+    @FXML
     private Text text;
+
+    ShipType shipType = null;
+    ArrayList<ShipType> shipTypeList = new ArrayList<>();
+
 
     @FXML
     void initialize() {
@@ -57,8 +66,6 @@ public class PlacementOfShips {
         placement(Game.getPlayer1());
         nextButton.setOnAction(event -> {
             if (Game.getPlayer1().getPlayingField().getCellShips().toArray().length == 20) {
-                cell.getChildren().remove(101, cell.getChildren().toArray().length);
-                flowPane.getChildren().removeAll(flowPane.getChildren());
                 placement(Game.getPlayer2());
                 nextButton.setOnAction(event1 -> {
                     if (Game.getPlayer2().getPlayingField().getCellShips().toArray().length == 20){
@@ -96,13 +103,9 @@ public class PlacementOfShips {
         });
     }
 
-    ShipType shipType = null;
     private void placement(PlayerOfThisRound player){
         text.setText(player.getPlayer().getName()+", arrange the ships on the field!");
-        shipList(new ShipType[1]);
-        shipList(new ShipType[2]);
-        shipList(new ShipType[3]);
-        shipList(new ShipType[4]);
+        clear(player);
         final boolean[] rotate = {false};
         rotateButton.setOnAction(event -> {
             if (shipType!=null){
@@ -111,30 +114,36 @@ public class PlacementOfShips {
                 else rotateButton.setStyle("-fx-background-color: #76ec9a");
             }
         });
+
+        randomButton.setOnAction(event -> {
+            clear(player);
+            flowPane.getChildren().removeAll(flowPane.getChildren());
+            for (ShipType s: shipTypeList) {
+                shipType = s;
+                Rectangle rectangle = shipType.copy().getRectangle();
+                int x;
+                int y;
+                Ship ship;
+                do {
+                    x = (int) (Math.random() * 10);
+                    y = (int) (Math.random() * 10);
+                    ship = new Ship(shipType, x, y, new Random().nextBoolean());
+                } while (!player.getPlayingField().putAShip(ship));
+                addShip(ship.getX(), ship.getY(), player, ship.getRotate());
+                rectangle.setFill(Paint.valueOf("#b5d0ea"));
+                rectangle.setStroke(Paint.valueOf("#000000"));
+                flowPane.getChildren().add(rectangle);
+            }
+        });
+
+        deleteButton.setOnAction(event -> clear(player));
+
         for (Node e: cell.getChildren()){
             e.setOnMouseClicked(event -> {
                 e.relocate(e.getLayoutX(), e.getLayoutY());
                 int x = (int) (Math.round(e.getLayoutX())/27);
                 int y = (int) (Math.round(e.getLayoutY())/27);
-                if (shipType != null) {
-                    Ship ship = new Ship(shipType, x, y, rotate[0]);
-                    if (player.getPlayingField().putAShip(ship)) {
-                        player.getPlayingField().addShip(ship);
-                        Rectangle rectangle;
-                        if (rotate[0]) {
-                            rectangle = new Rectangle(27, 27 * shipType.getSize(), Paint.valueOf("DODGERBLUE"));
-                            cell.add(rectangle, x, y, 1, shipType.getSize());
-
-                        } else {
-                            rectangle = new Rectangle(27 * shipType.getSize(), 27, Paint.valueOf("DODGERBLUE"));
-                            cell.add(rectangle, x, y, shipType.getSize(), 1);
-
-                        }
-                        shipType = null;
-                    }else {
-                        information("You can't put a ship here!");
-                    }
-                }
+                addShip(x, y, player, rotate[0]);
             });
         }
     }
@@ -146,6 +155,7 @@ public class PlacementOfShips {
             //shipTypeList[i].getRectangle().setOnMouseClicked(eventHandler);
             flowPane.getChildren().add(shipTypeList[i].getRectangle());
             ShipType shipType = shipTypeList[i];
+            this.shipTypeList.add(shipTypeList[i]);
             shipType.getRectangle().setOnMouseClicked(event -> {
                 if (this.shipType==null) {
                     this.shipType = shipType.copy();
@@ -167,6 +177,41 @@ public class PlacementOfShips {
 
         alert.showAndWait();
     }
+
+    private void clear(PlayerOfThisRound player){
+        cell.getChildren().remove(101, cell.getChildren().toArray().length);
+        flowPane.getChildren().removeAll(flowPane.getChildren());
+        shipType = null;
+        shipTypeList = new ArrayList<>();
+        player.getPlayingField().removeAll(player);
+        shipList(new ShipType[1]);
+        shipList(new ShipType[2]);
+        shipList(new ShipType[3]);
+        shipList(new ShipType[4]);
+    }
+
+    private void addShip(int x, int y, PlayerOfThisRound player, boolean rotate){
+        if (shipType != null) {
+            Ship ship = new Ship(shipType, x, y, rotate);
+            if (player.getPlayingField().putAShip(ship)) {
+                player.getPlayingField().addShip(ship);
+                Rectangle rectangle;
+                if (rotate) {
+                    rectangle = new Rectangle(27, 27 * shipType.getSize(), Paint.valueOf("DODGERBLUE"));
+                    cell.add(rectangle, x, y, 1, shipType.getSize());
+
+                } else {
+                    rectangle = new Rectangle(27 * shipType.getSize(), 27, Paint.valueOf("DODGERBLUE"));
+                    cell.add(rectangle, x, y, shipType.getSize(), 1);
+
+                }
+                shipType = null;
+            }else {
+                information("You can't put a ship here!");
+            }
+        }
+    }
+
 }
 
 

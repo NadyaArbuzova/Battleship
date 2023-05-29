@@ -107,13 +107,31 @@
 <!--            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" stroke="BLACK" strokeType="INSIDE" width="27.0" />-->
          </children>
       </FlowPane>
-      <FlowPane layoutX="398.0" layoutY="249.0" prefHeight="60.0" prefWidth="197.0">
+      <FlowPane hgap="10.0" layoutX="398.0" layoutY="249.0" prefHeight="60.0" prefWidth="197.0">
          <children>
             <Button fx:id="rotateButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-image: C:\Users\Nadya\IdeaProjects\Battleship\src\main\resources\com\example\battleship\image\rotate.png; -fx-background-color: #b5e2ef; -fx-background-radius: 5;" textFill="#61afff">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0">
                      <image>
                         <Image url="@image/rotate.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="randomButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-image: C:\Users\Nadya\IdeaProjects\Battleship\src\main\resources\com\example\battleship\image\rotate.png; -fx-background-color: #b5e2ef; -fx-background-radius: 5;" textFill="#61afff">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0">
+                     <image>
+                        <Image url="@image/random.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="deleteButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-image: C:\Users\Nadya\IdeaProjects\Battleship\src\main\resources\com\example\battleship\image\rotate.png; -fx-background-color: #b5e2ef; -fx-background-radius: 5;" textFill="#61afff">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0">
+                     <image>
+                        <Image url="@image/del.png" />
                      </image>
                   </ImageView>
                </graphic>

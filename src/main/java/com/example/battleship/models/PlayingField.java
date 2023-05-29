@@ -1,5 +1,6 @@
 package com.example.battleship.models;
 
+import com.example.battleship.PlayerOfThisRound;
 import com.example.battleship.Ship;
 import javafx.scene.image.Image;
 import javafx.util.Pair;
@@ -90,6 +91,7 @@ public class PlayingField {
     }
 
     private void shot(int x, int y) {
+        System.out.println(x+" "+y);
         if (!cellList[x][y].isShot()) {
             cellShots.add(new Pair<>(x, y));
             cellList[x][y].setShot(true);
@@ -100,9 +102,9 @@ public class PlayingField {
     }
     public void addShot(int x, int y){
         shot(x, y);
-        if (cellList[x][y].isShip().shipKilled()){
+        if (cellList[x][y].isShip() != null && cellList[x][y].isShip().shipKilled()){
             for (Pair<Integer,Integer> xy: cellList[x][y].isShip().getCellsAroundTheShipXY()){
-                shot(xy.getKey(),xy.getValue());
+                if(xy.getKey() < 10 && xy.getKey() >= 0 && xy.getValue() < 10 && xy.getValue() >= 0) shot(xy.getKey(),xy.getValue());
             }
         }
     }
@@ -140,6 +142,9 @@ public class PlayingField {
             removeShip(xy.getKey(), xy.getValue());
             cellList[xy.getKey()][xy.getValue()].setShip(ship);
         }
+    }
+    public void removeAll(PlayerOfThisRound player) {
+        player.setPlayingField(new PlayingField());
     }
 //
 //    public void removeAllShips(ArrayList<Pair<Integer, Integer>> shipCellsXY) {

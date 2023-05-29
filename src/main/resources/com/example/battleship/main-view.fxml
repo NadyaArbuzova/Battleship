@@ -5,6 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #ffb489;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleship.Controller">
@@ -16,9 +17,18 @@
           <Font name="Kristen ITC" size="56.0" />
         </font>
     </Label>
-    <Button fx:id="playButton" layoutX="247.0" layoutY="221.0" mnemonicParsing="false" opacity="0.8" prefHeight="46.0" prefWidth="206.0" style="-fx-background-color: #a3cbdc; -fx-border-color: #0f144e; -fx-border-radius: 7; -fx-background-radius: 7;" text="Play">
-        <font>
-            <Font name="Courier New" size="30.0" />
-        </font>
-    </Button>
+   <VBox layoutX="224.0" layoutY="231.0" prefHeight="126.0" prefWidth="244.0" spacing="10.0">
+      <children>
+          <Button fx:id="playButton" mnemonicParsing="false" prefHeight="58.0" prefWidth="248.0" style="-fx-background-color: #a3cbdc; -fx-border-color: #0f144e; -fx-border-radius: 7; -fx-background-radius: 7;" text="Play">
+              <font>
+                  <Font name="Courier New" size="30.0" />
+              </font>
+          </Button>
+         <Button fx:id="statisticsButton" mnemonicParsing="false" prefHeight="58.0" prefWidth="258.0" style="-fx-background-color: #c2c2c2; -fx-border-color: #0f144e; -fx-border-radius: 7; -fx-background-radius: 7;" text="Statistics">
+            <font>
+               <Font name="Courier New" size="30.0" />
+            </font>
+         </Button>
+      </children>
+   </VBox>
 </AnchorPane>
