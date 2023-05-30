@@ -1,6 +1,5 @@
 package com.example.battleship.models;
 
-import com.example.battleship.Player;
 import org.junit.jupiter.api.*;
 
 import java.io.*;

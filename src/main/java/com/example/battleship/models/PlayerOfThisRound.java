@@ -1,5 +1,6 @@
-package com.example.battleship;
+package com.example.battleship.models;
 
+import com.example.battleship.models.Player;
 import com.example.battleship.models.PlayingField;
 
 public class PlayerOfThisRound {

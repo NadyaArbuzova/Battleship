@@ -7,4 +7,6 @@ module com.example.battleship {
 
     exports com.example.battleship;
     exports com.example.battleship.models;
+    exports com.example.battleship.controllers;
+    opens com.example.battleship.controllers to javafx.fxml;
 }

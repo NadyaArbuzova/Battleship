@@ -1,7 +1,5 @@
 package com.example.battleship.models;
 
-import com.example.battleship.Player;
-
 import java.io.*;
 import java.util.HashMap;
 

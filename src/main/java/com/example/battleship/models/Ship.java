@@ -1,13 +1,10 @@
-package com.example.battleship;
+package com.example.battleship.models;
 
 
-import javafx.scene.image.Image;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Pair;
-import javafx.scene.canvas.GraphicsContext;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Ship {
     private final ShipType shipType;

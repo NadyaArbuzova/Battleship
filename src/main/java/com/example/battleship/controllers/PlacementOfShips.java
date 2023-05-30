@@ -1,4 +1,4 @@
-package com.example.battleship;
+package com.example.battleship.controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -7,6 +7,9 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 import com.example.battleship.models.Game;
+import com.example.battleship.models.PlayerOfThisRound;
+import com.example.battleship.models.Ship;
+import com.example.battleship.models.ShipType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

@@ -1,9 +1,6 @@
-package com.example.battleship;
+package com.example.battleship.models;
 
-import javafx.scene.image.Image;
 import javafx.scene.shape.Rectangle;
-
-import java.util.Objects;
 
 public class ShipType {
     private final int size;

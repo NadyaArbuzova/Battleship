@@ -1,8 +1,5 @@
 package com.example.battleship.models;
 
-import com.example.battleship.Player;
-import com.example.battleship.PlayerOfThisRound;
-
 public class Game {
     private static PlayerOfThisRound player1;
     private static PlayerOfThisRound player2;

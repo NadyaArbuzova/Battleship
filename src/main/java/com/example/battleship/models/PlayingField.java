@@ -1,8 +1,5 @@
 package com.example.battleship.models;
 
-import com.example.battleship.PlayerOfThisRound;
-import com.example.battleship.Ship;
-import javafx.scene.image.Image;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
