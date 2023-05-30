@@ -1,4 +1,4 @@
-package com.example.battleship.models;
+package com.example.battleship.model;
 
 import javafx.scene.shape.Rectangle;
 

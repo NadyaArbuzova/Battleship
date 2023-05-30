@@ -1,13 +1,13 @@
-package com.example.battleship.controllers;
+package com.example.battleship.controller;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-import com.example.battleship.Battleship;
-import com.example.battleship.models.Game;
-import com.example.battleship.models.PlayerOfThisRound;
+import com.example.battleship.view.Battleship;
+import com.example.battleship.model.Game;
+import com.example.battleship.model.PlayerOfThisRound;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

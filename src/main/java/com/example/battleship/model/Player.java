@@ -1,4 +1,4 @@
-package com.example.battleship.models;
+package com.example.battleship.model;
 
 public class Player {
     private String name;

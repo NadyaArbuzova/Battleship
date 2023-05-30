@@ -1,4 +1,4 @@
-package com.example.battleship.models;
+package com.example.battleship.model;
 
 import javafx.util.Pair;
 

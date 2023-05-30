@@ -1,7 +1,4 @@
-package com.example.battleship.models;
-
-import com.example.battleship.models.Player;
-import com.example.battleship.models.PlayingField;
+package com.example.battleship.model;
 
 public class PlayerOfThisRound {
     private final Player player;

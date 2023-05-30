@@ -1,4 +1,4 @@
-package com.example.battleship.models;
+package com.example.battleship.model;
 
 import java.io.*;
 import java.util.HashMap;

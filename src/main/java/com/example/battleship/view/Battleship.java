@@ -1,7 +1,7 @@
-package com.example.battleship;
+package com.example.battleship.view;
 
-import com.example.battleship.models.FileSystemPlayer;
-import com.example.battleship.models.Game;
+import com.example.battleship.model.FileSystemPlayer;
+import com.example.battleship.model.Game;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

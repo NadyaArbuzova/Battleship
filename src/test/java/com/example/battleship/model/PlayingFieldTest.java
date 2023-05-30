@@ -1,10 +1,6 @@
-package com.example.battleship.models;
+package com.example.battleship.model;
 
-import javafx.scene.shape.Rectangle;
-import javafx.util.Pair;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 

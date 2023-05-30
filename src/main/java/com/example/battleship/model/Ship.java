@@ -1,7 +1,6 @@
-package com.example.battleship.models;
+package com.example.battleship.model;
 
 
-import javafx.scene.shape.Rectangle;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
