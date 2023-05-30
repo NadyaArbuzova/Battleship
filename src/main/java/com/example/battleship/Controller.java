@@ -64,13 +64,6 @@ public class Controller {
             table.getColumns().addAll(name, rounds, wins);
             table.setItems(players);
 
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("statistics.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
             VBox vBox = new VBox();
             vBox.getChildren().addAll(table);
             Scene scene = new Scene(vBox);
