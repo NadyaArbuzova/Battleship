@@ -7,9 +7,9 @@ import javafx.util.Pair;
 import java.util.ArrayList;
 
 public class Ship {
-    private final ShipType shipType;
     private final int x;
     private final int y;
+    private final int size;
     private final boolean rotate;
     private int hits = 0;
     public int getHits() {
@@ -22,11 +22,11 @@ public class Ship {
     private final ArrayList<Pair<Integer,Integer>> shipCellsXY;
     private final ArrayList<Pair<Integer,Integer>> cellsAroundTheShipXY;
 
-    public Ship(int size, Rectangle rectangle, int x, int y, boolean rotate) {
+    public Ship(int size, int x, int y, boolean rotate) {
         this.x = x;
         this.y = y;
+        this.size = size;
         this.rotate = rotate;
-        shipType = new ShipType(size, rectangle);
         shipCellsXY = new ArrayList<>();
         cellsAroundTheShipXY = new ArrayList<>();
         if (!rotate) {
@@ -75,11 +75,10 @@ public class Ship {
     public Ship(ShipType shipType, int x, int y, boolean rotate) {
         this.x = x;
         this.y = y;
+        this.size = shipType.getSize();
         this.rotate = rotate;
-        this.shipType = shipType;
         shipCellsXY = new ArrayList<>();
         cellsAroundTheShipXY = new ArrayList<>();
-        int size = shipType.getSize();
         if (!rotate) {
             for (int i = 0; i < size; i++) {
                 shipCellsXY.add(new Pair<>(x + i, y));
@@ -119,10 +118,7 @@ public class Ship {
         return cellsAroundTheShipXY;
     }
 
-    public ShipType getShipType() {
-        return shipType;
-    }
     public boolean shipKilled(){
-        return hits==shipType.getSize();
+        return hits==size;
     }
 }

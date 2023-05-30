@@ -134,9 +134,10 @@ public class PlayingField {
     }
 
     public void removeShip(Ship ship) {
-        for (Pair<Integer, Integer> xy : ship.getShipCellsXY()) {
+        for (Pair<Integer, Integer> xy : ship.getCellsAroundTheShipXY()) {
             removeShip(xy.getKey(), xy.getValue());
-            cellList[xy.getKey()][xy.getValue()].setShip(ship);
+            cellList[xy.getKey()][xy.getValue()].setShip(null);
+            cellList[xy.getKey()][xy.getValue()].setPutAShip(true);
         }
     }
     public void removeAll(PlayerOfThisRound player) {
