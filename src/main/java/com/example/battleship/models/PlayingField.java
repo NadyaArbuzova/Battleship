@@ -91,7 +91,6 @@ public class PlayingField {
     }
 
     private void shot(int x, int y) {
-        System.out.println(x+" "+y);
         if (!cellList[x][y].isShot()) {
             cellShots.add(new Pair<>(x, y));
             cellList[x][y].setShot(true);
