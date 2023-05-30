@@ -1,12 +1,11 @@
-package com.example.battleship.controller;
+package com.example.battleship;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-import com.example.battleship.view.Battleship;
-import com.example.battleship.model.Game;
+import com.example.battleship.model.Round;
 import com.example.battleship.model.PlayerOfThisRound;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +24,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.util.Pair;
 
-public class GameControl {
+public class GameController {
 
     @FXML
     private ResourceBundle resources;
@@ -47,7 +46,7 @@ public class GameControl {
 
     @FXML
     private Text playerName2;
-    private String notWalkingNow = Game.getPlayer2().getPlayer().getName();
+    private String notWalkingNow = Round.getPlayer2().getPlayer().getName();
 
     @FXML
     void initialize() {
@@ -57,10 +56,10 @@ public class GameControl {
                 cell2.add(new Pane(), i, j);
             }
         }
-        playerName1.setText(Game.getPlayer1().getPlayer().getName());
-        playerName2.setText(Game.getPlayer2().getPlayer().getName());
-        turn(Game.getPlayer1(), cell2);
-        turn(Game.getPlayer2(), cell1);
+        playerName1.setText(Round.getPlayer1().getPlayer().getName());
+        playerName2.setText(Round.getPlayer2().getPlayer().getName());
+        turn(Round.getPlayer1(), cell2);
+        turn(Round.getPlayer2(), cell1);
         backButton.setOnAction(event -> {
             closeWindow(backButton.getScene().getWindow());
         });
@@ -107,14 +106,14 @@ public class GameControl {
         }
     }
     private String nextTurn(PlayerOfThisRound player){
-        if (player.getPlayer().getName().equals(Game.getPlayer1().getPlayer().getName())) {
+        if (player.getPlayer().getName().equals(Round.getPlayer1().getPlayer().getName())) {
             playerName1.setFill(Paint.valueOf("#06a125"));
             playerName2.setFill(Paint.valueOf("#000000"));
-            return Game.getPlayer2().getPlayer().getName();
+            return Round.getPlayer2().getPlayer().getName();
         }
         playerName2.setFill(Paint.valueOf("#06a125"));
         playerName1.setFill(Paint.valueOf("#000000"));
-        return Game.getPlayer1().getPlayer().getName();
+        return Round.getPlayer1().getPlayer().getName();
     }
     private void closeWindow(Window window){
         window.getScene().getWindow().hide();

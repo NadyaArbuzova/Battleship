@@ -1,10 +1,10 @@
-package com.example.battleship.controller;
+package com.example.battleship;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.example.battleship.view.Battleship;
+import com.example.battleship.Battleship;
 import com.example.battleship.model.Player;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

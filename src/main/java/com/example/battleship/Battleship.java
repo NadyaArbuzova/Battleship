@@ -1,7 +1,7 @@
-package com.example.battleship.view;
+package com.example.battleship;
 
 import com.example.battleship.model.FileSystemPlayer;
-import com.example.battleship.model.Game;
+import com.example.battleship.model.Round;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class Battleship extends Application {
 
-    public static Game game;
+    public static Round round;
     public static FileSystemPlayer fileSystemPlayer = new FileSystemPlayer();
     @Override
     public void start(Stage primaryStage) throws Exception {

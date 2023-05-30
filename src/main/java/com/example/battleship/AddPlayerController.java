@@ -1,12 +1,11 @@
-package com.example.battleship.controller;
+package com.example.battleship;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.example.battleship.view.Battleship;
 import com.example.battleship.model.FileSystemPlayer;
-import com.example.battleship.model.Game;
+import com.example.battleship.model.Round;
 import com.example.battleship.model.Player;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -76,7 +75,7 @@ public class AddPlayerController {
                         if (!playerName.getText().equals(player1.getName())) {
                             Battleship.fileSystemPlayer.addPlayer(playerName.getText());
                             Player player2 = Battleship.fileSystemPlayer.getPlayer(playerName.getText());
-                            Battleship.game = new Game(player1, player2);
+                            Battleship.round = new Round(player1, player2);
                             nextButton.getScene().getWindow().hide();
                             FXMLLoader loader = new FXMLLoader();
                             loader.setLocation(getClass().getResource("placement-of-ships.fxml"));

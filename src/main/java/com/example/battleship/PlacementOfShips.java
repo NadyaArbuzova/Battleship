@@ -1,4 +1,4 @@
-package com.example.battleship.controller;
+package com.example.battleship;
 
 import java.io.IOException;
 import java.net.URL;
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-import com.example.battleship.model.Game;
+import com.example.battleship.model.Round;
 import com.example.battleship.model.PlayerOfThisRound;
 import com.example.battleship.model.Ship;
 import com.example.battleship.model.ShipType;
@@ -66,12 +66,12 @@ public class PlacementOfShips {
                 cell.add(new Pane(), i, j);
             }
         }
-        placement(Game.getPlayer1());
+        placement(Round.getPlayer1());
         nextButton.setOnAction(event -> {
-            if (Game.getPlayer1().getPlayingField().getCellShips().toArray().length == 20) {
-                placement(Game.getPlayer2());
+            if (Round.getPlayer1().getPlayingField().getCellShips().toArray().length == 20) {
+                placement(Round.getPlayer2());
                 nextButton.setOnAction(event1 -> {
-                    if (Game.getPlayer2().getPlayingField().getCellShips().toArray().length == 20){
+                    if (Round.getPlayer2().getPlayingField().getCellShips().toArray().length == 20){
                         nextButton.getScene().getWindow().hide();
                         FXMLLoader loader = new FXMLLoader();
                         loader.setLocation(getClass().getResource("game.fxml"));

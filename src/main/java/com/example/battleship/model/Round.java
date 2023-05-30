@@ -1,12 +1,12 @@
 package com.example.battleship.model;
 
-public class Game {
+public class Round {
     private static PlayerOfThisRound player1;
     private static PlayerOfThisRound player2;
 
-    public Game(Player player1, Player player2) {
-        Game.player1 = new PlayerOfThisRound(player1, new PlayingField());
-        Game.player2 = new PlayerOfThisRound(player2, new PlayingField());
+    public Round(Player player1, Player player2) {
+        Round.player1 = new PlayerOfThisRound(player1, new PlayingField());
+        Round.player2 = new PlayerOfThisRound(player2, new PlayingField());
     }
 
     public static PlayerOfThisRound getPlayer1() {
